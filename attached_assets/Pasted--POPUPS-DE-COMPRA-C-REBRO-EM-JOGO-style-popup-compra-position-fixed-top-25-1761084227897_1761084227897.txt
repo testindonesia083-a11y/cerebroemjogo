@@ -1,0 +1,157 @@
+<!-- POPUPS DE COMPRA - CÉREBRO EM JOGO -->
+<style>
+.popup-compra {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: linear-gradient(135deg, #ff7b4a, #ffd84a, #6dd47e, #2596ff);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+  color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.6s ease;
+  z-index: 9999;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.popup-compra.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popup-brain {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.popup-compra img.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  object-fit: cover;
+}
+
+.popup-text {
+  line-height: 1.2;
+}
+
+.popup-text strong {
+  color: #fff;
+}
+
+.produto-basico {
+  color: #ffe88c;
+  font-weight: bold;
+}
+
+.produto-super {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+
+.popup-tag {
+  background: rgba(255,255,255,0.9);
+  color: #333;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+@media (max-width: 600px) {
+  .popup-compra {
+    top: 15px;
+    right: 10px;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  .popup-brain { width: 28px; height: 28px; }
+}
+</style>
+
+<div id="popup-container"></div>
+
+<script>
+const nomes = [
+  "Ana", "Carlos", "Fernanda", "João", "Marina", "Gustavo",
+  "Rafaela", "Thiago", "Beatriz", "Pedro", "Larissa", "Lucas"
+];
+
+const cidades = [
+  "São Paulo", "Rio de Janeiro", "Curitiba", "Salvador", "Fortaleza",
+  "Brasília", "Florianópolis", "Recife", "Porto Alegre", "Belém"
+];
+
+const produtos = [
+  { nome: "Pack Básico", classe: "produto-basico" },
+  { nome: "Super Pack", classe: "produto-super" }
+];
+
+const avatares = [
+  "https://i.pravatar.cc/150?img=12",
+  "https://i.pravatar.cc/150?img=32",
+  "https://i.pravatar.cc/150?img=45",
+  "https://i.pravatar.cc/150?img=21",
+  "https://i.pravatar.cc/150?img=18",
+  "https://i.pravatar.cc/150?img=54",
+  "https://i.pravatar.cc/150?img=60"
+];
+
+const brainIcon = "https://i.ibb.co/1bKhC9z/brain-icon.png"; 
+// 💡 Substitua pelo link do cérebro colorido do seu logo (com fundo transparente).
+
+function mostrarPopup() {
+  const nome = nomes[Math.floor(Math.random() * nomes.length)];
+  const cidade = cidades[Math.floor(Math.random() * cidades.length)];
+  const produto = produtos[Math.floor(Math.random() * produtos.length)];
+  const avatar = avatares[Math.floor(Math.random() * avatares.length)];
+
+  const frases = [
+    `acabou de comprar o <span class="${produto.classe}">${produto.nome}</span>! 🎉`,
+    `aproveitou o desconto e levou o <span class="${produto.classe}">${produto.nome}</span> 😍`,
+    `acabou de garantir o <span class="${produto.classe}">${produto.nome}</span> com desconto! 🛍️`
+  ];
+
+  const frase = frases[Math.floor(Math.random() * frases.length)];
+
+  const popup = document.createElement('div');
+  popup.className = 'popup-compra';
+  popup.innerHTML = `
+    <img class="popup-brain" src="${brainIcon}" alt="Cérebro em Jogo">
+    <img class="avatar" src="${avatar}" alt="Comprador">
+    <div class="popup-text">
+      <strong>${nome}</strong> de <strong>${cidade}</strong> ${frase}
+      <span class="popup-tag">Oferta!</span>
+    </div>
+  `;
+
+  document.getElementById('popup-container').appendChild(popup);
+
+  setTimeout(() => popup.classList.add('show'), 100);
+
+  setTimeout(() => {
+    popup.classList.remove('show');
+    setTimeout(() => popup.remove(), 500);
+  }, 5000);
+}
+
+setInterval(mostrarPopup, Math.random() * 8000 + 10000);
+</script>

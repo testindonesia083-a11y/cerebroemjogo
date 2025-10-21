@@ -1,0 +1,846 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+.header {
+    background: linear-gradient(180deg, #fff 0%, #f8f8f8 100%);
+    padding: 30px 20px 40px;
+    text-align: center;
+}
+
+.logo {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-img {
+    max-width: 350px;
+    width: 90%;
+    height: auto;
+}
+
+.activities-label {
+    font-family: 'Chewy', cursive;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0088cc;
+    margin: 10px 0 5px 0;
+}
+
+.tagline {
+    font-family: 'Chewy', cursive;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0 0 20px 0;
+}
+
+.yellow-text {
+    color: #ffcc00;
+}
+
+.blue-text {
+    color: #0088cc;
+}
+
+.red-text {
+    color: #ff3333;
+}
+
+.orange-text {
+    color: #ff8800;
+}
+
+.description-text {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #0088cc;
+    margin: 0 0 25px 0;
+}
+
+.yellow-highlight {
+    color: #ffcc00;
+}
+
+.red-highlight {
+    color: #ff3333;
+}
+
+.cta-button {
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 15px;
+    margin-bottom: -30px;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+.button-img {
+    max-width: 400px;
+    width: 90%;
+    height: auto;
+}
+
+.activities-card {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.card-atividades-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+}
+
+.activities-card .card-atividades-img:first-child {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .activities-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .activities-card .card-atividades-img:first-child {
+        grid-column: 1 / -1;
+        max-width: 70%;
+        margin: 0 auto;
+    }
+    
+    .activities-card .card-atividades-img:nth-child(2),
+    .activities-card .card-atividades-img:nth-child(3),
+    .activities-card .card-atividades-img:nth-child(4) {
+        width: 100%;
+    }
+    
+    .activities-card {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .activities-card .card-atividades-img:first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+.section {
+    padding: 30px 15px;
+    width: 100%;
+}
+
+.blue-section {
+    background-color: #0088cc;
+    padding: 0;
+}
+
+.yellow-section {
+    background-color: #ffcc00;
+}
+
+.white-section {
+    background-color: #fff;
+}
+
+.card {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.white-card {
+    background: white;
+}
+
+.image-placeholder {
+    width: 100%;
+    background: #e0e0e0;
+    position: relative;
+}
+
+.activities-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 136, 204, 0.9);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.card-body {
+    padding: 25px;
+    text-align: center;
+}
+
+.card-body h3 {
+    color: #0088cc;
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.card-body p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.orange-card {
+    background-color: #ff8800;
+    color: white;
+}
+
+.orange-card h3 {
+    color: white;
+}
+
+.orange-card p {
+    color: white;
+}
+
+.price-box {
+    background: white;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 35px 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.price-old {
+    color: #999;
+    font-size: 16px;
+    text-decoration: line-through;
+    margin-bottom: 5px;
+}
+
+.price-new {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.price-value {
+    color: #ff3333;
+    font-size: 52px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.section-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.white-text {
+    color: white;
+}
+
+.benefits-list {
+    list-style: none;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.benefits-list li {
+    color: white;
+    font-size: 17px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    text-align: left;
+}
+
+.benefits-list li:last-child {
+    border-bottom: none;
+}
+
+.product-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.btn-cta {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.green-btn {
+    background-color: #22dd66;
+    color: white;
+    padding: 18px 35px;
+}
+
+.green-btn:hover {
+    background-color: #1ec557;
+    transform: scale(1.02);
+}
+
+.green-btn.large {
+    font-size: 20px;
+    padding: 20px 45px;
+}
+
+.price-card {
+    max-width: 500px;
+    margin: 0 auto 30px;
+}
+
+.price-badge {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.yellow-badge {
+    background-color: #ffcc00;
+}
+
+.badge-old-price {
+    color: #666;
+    font-size: 15px;
+    text-decoration: line-through;
+}
+
+.badge-new-price {
+    color: #ff3333;
+    font-size: 38px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.badge-installment {
+    color: #22aa44;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.kit-list {
+    list-style: none;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.kit-list li {
+    color: white;
+    font-size: 17px;
+    padding: 12px 0;
+    text-align: left;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.gallery-item {
+    flex: 0 0 auto;
+}
+
+.info-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.info-card h3 {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.info-card p {
+    color: white;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.final-price {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.final-label {
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.final-value {
+    color: #ff3333;
+    font-size: 56px;
+    font-weight: 700;
+    margin: 12px 0;
+}
+
+.final-install {
+    color: #22aa44;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.about-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.badge-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.green-check {
+    background-color: #22dd66;
+    color: white;
+}
+
+.badge-label {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.about-text {
+    color: white;
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto 15px;
+    text-align: center;
+}
+
+.footer {
+    background-color: white;
+    padding: 0;
+    text-align: center;
+}
+
+.promo-header {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.offer-container {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.offer-old-price {
+    font-size: 22px;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.strikethrough-red {
+    text-decoration: line-through;
+    color: #ff0000;
+}
+
+.offer-new-price {
+    font-size: 72px;
+    font-weight: 700;
+    color: #22dd66;
+    margin: 20px 0 30px 0;
+}
+
+.btn-receive {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.btn-receive:hover {
+    transform: scale(1.05);
+}
+
+.btn-receive-img {
+    max-width: 350px;
+    width: 90%;
+    height: auto;
+}
+
+.payment-badges {
+    max-width: 500px;
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.full-width-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.white-section.section {
+    padding: 0;
+}
+
+.white-section.section:has(.offer-container) {
+    padding: 30px 15px;
+}
+
+.kit-section {
+    background-color: #feb70d;
+    padding: 30px 15px;
+}
+
+.kit-section-title {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    margin: 0 0 25px 0;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.kit-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+}
+
+.benefits-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+}
+
+@media (min-width: 768px) {
+    .benefits-img {
+        max-width: 70%;
+        margin: 20px auto;
+    }
+}
+
+.btn-kit-receive {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+}
+
+.btn-kit-receive:hover {
+    transform: scale(1.05);
+}
+
+.btn-kit-img {
+    max-width: 600px;
+    width: 90%;
+    height: auto;
+}
+
+.receive-section {
+    padding: 30px 15px 0 15px;
+}
+
+.receive-title {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: #0088cc;
+    text-align: center;
+    margin: 0 0 25px 0;
+}
+
+.receive-images {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.receive-img {
+    width: 50%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .receive-images {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .receive-img {
+        width: 100%;
+    }
+}
+
+.bonus-section {
+    background-color: #1384c6;
+    padding: 0;
+}
+
+.bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+}
+
+.bonus-grid-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (min-width: 769px) {
+    .bonus-section .full-width-img {
+        max-width: 60%;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .bonus-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.packs-container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.pack-link {
+    display: block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    flex: 1;
+}
+
+.pack-link:hover {
+    transform: scale(1.02);
+}
+
+.pack-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (min-width: 769px) {
+    .footer .full-width-img:first-child {
+        max-width: 60%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .packs-container {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+.faq-section {
+    background: linear-gradient(180deg, #d4ebf7 0%, #b8ddf0 100%);
+    padding: 50px 20px;
+}
+
+.faq-title {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+.faq-container {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.faq-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 25px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.faq-question {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #00a88f;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+.faq-answer {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .tagline {
+        font-size: 28px;
+    }
+    
+    .description-text {
+        font-size: 14px;
+    }
+    
+    .cta-button {
+        margin-bottom: -50px;
+    }
+    
+    .blue-section {
+        padding: 0;
+    }
+    
+    .price-value, .final-value {
+        font-size: 42px;
+    }
+    
+    .section {
+        padding: 25px 10px;
+    }
+    
+    .promo-header {
+        font-size: 22px;
+    }
+    
+    .offer-old-price {
+        font-size: 20px;
+    }
+    
+    .offer-new-price {
+        font-size: 64px;
+    }
+    
+    .receive-title {
+        font-size: 28px;
+    }
+    
+    .faq-section {
+        padding: 40px 15px;
+    }
+    
+    .faq-title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    
+    .faq-card {
+        padding: 20px;
+    }
+    
+    .faq-question {
+        font-size: 18px;
+    }
+    
+    .faq-answer {
+        font-size: 15px;
+    }
+}

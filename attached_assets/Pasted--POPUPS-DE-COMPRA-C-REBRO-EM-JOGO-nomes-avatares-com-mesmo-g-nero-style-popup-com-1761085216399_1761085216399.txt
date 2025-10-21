@@ -1,0 +1,168 @@
+<!-- POPUPS DE COMPRA - CÉREBRO EM JOGO (nomes + avatares com mesmo gênero) -->
+<style>
+.popup-compra {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: linear-gradient(135deg, #ff7b4a, #ffd84a, #6dd47e, #2596ff);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+  color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.6s ease;
+  z-index: 9999;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.popup-compra.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popup-compra img.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  object-fit: cover;
+}
+
+.popup-text {
+  line-height: 1.2;
+}
+
+.popup-text strong {
+  color: #fff;
+}
+
+.produto-basico {
+  color: #ffe88c;
+  font-weight: bold;
+}
+
+.produto-super {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+
+.popup-tag {
+  background: rgba(255,255,255,0.9);
+  color: #333;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+@media (max-width: 600px) {
+  .popup-compra {
+    top: 15px;
+    right: 10px;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+}
+</style>
+
+<div id="popup-container"></div>
+
+<script>
+// nomes por gênero
+const femaleNames = [
+  "Ana", "Fernanda", "Marina", "Rafaela", "Beatriz", "Larissa", "Juliana", "Camila"
+];
+const maleNames = [
+  "Carlos", "João", "Gustavo", "Thiago", "Pedro", "Lucas", "Matheus", "Rafael"
+];
+
+const cidades = [
+  "São Paulo", "Rio de Janeiro", "Curitiba", "Salvador", "Fortaleza",
+  "Brasília", "Florianópolis", "Recife", "Porto Alegre", "Belém"
+];
+
+// Priorizando mais o Super Pack (80% das vezes)
+const produtos = [
+  { nome: "Super Pack", classe: "produto-super" },
+  { nome: "Super Pack", classe: "produto-super" },
+  { nome: "Super Pack", classe: "produto-super" },
+  { nome: "Super Pack", classe: "produto-super" },
+  { nome: "Pack Básico", classe: "produto-basico" }
+];
+
+// avatares organizados por gênero (urls públicas de exemplo)
+const femaleAvatars = [
+  "https://i.pravatar.cc/150?img=47",
+  "https://i.pravatar.cc/150?img=56",
+  "https://i.pravatar.cc/150?img=34",
+  "https://i.pravatar.cc/150?img=65",
+  "https://i.pravatar.cc/150?img=14"
+];
+const maleAvatars = [
+  "https://i.pravatar.cc/150?img=12",
+  "https://i.pravatar.cc/150?img=32",
+  "https://i.pravatar.cc/150?img=45",
+  "https://i.pravatar.cc/150?img=21",
+  "https://i.pravatar.cc/150?img=18"
+];
+
+// função utilitária para escolher aleatório
+function randItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function mostrarPopup() {
+  // escolhe gênero aleatório (50/50)
+  const genero = Math.random() < 0.5 ? 'F' : 'M';
+
+  // seleciona nome e avatar de acordo com o gênero escolhido
+  const nome = genero === 'F' ? randItem(femaleNames) : randItem(maleNames);
+  const avatar = genero === 'F' ? randItem(femaleAvatars) : randItem(maleAvatars);
+
+  const cidade = randItem(cidades);
+  const produto = randItem(produtos);
+
+  const frases = [
+    `acabou de comprar o <span class="${produto.classe}">${produto.nome}</span>! 🎉`,
+    `aproveitou o desconto e levou o <span class="${produto.classe}">${produto.nome}</span> 😍`,
+    `acabou de garantir o <span class="${produto.classe}">${produto.nome}</span> com desconto! 🛍️`
+  ];
+  const frase = randItem(frases);
+
+  const popup = document.createElement('div');
+  popup.className = 'popup-compra';
+  popup.innerHTML = `
+    <img class="avatar" src="${avatar}" alt="Comprador">
+    <div class="popup-text">
+      <strong>${nome}</strong> de <strong>${cidade}</strong> ${frase}
+      <span class="popup-tag">Oferta!</span>
+    </div>
+  `;
+
+  document.getElementById('popup-container').appendChild(popup);
+  // anima entrada
+  setTimeout(() => popup.classList.add('show'), 100);
+
+  // remove após 5s
+  setTimeout(() => {
+    popup.classList.remove('show');
+    setTimeout(() => popup.remove(), 500);
+  }, 5000);
+}
+
+// exibe a cada 10–18 segundos
+setInterval(mostrarPopup, Math.random() * 8000 + 10000);
+</script>
